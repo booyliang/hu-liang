@@ -10,7 +10,7 @@
 <div style="text-align: center"> 
     <canvas id="c" style="width: 20rem"></canvas> 
 </div>
-<embed src="Westlife - Beautiful In White (Demo).mp3" hidden="true" autostart="true" loop="true">
+<audio src="Westlife - Beautiful In White (Demo).mp3" id="Jaudio" class="media-audio" autoplay preload loop="loop"></audio>
 
     <pre id="aa" style="white-space:normal"></pre>
     <div style="display:none" id="w">
@@ -110,13 +110,32 @@
         }  
     }, 0);  
 
-
-     var index=0;
+    // 控制字体滚动
+    var index=0;
     var word=document.getElementById("w").innerHTML;
     function type(){
         document.getElementById("aa").innerText = word.substring(0,index++);
     }
     setInterval(type, 200);
+
+    // 控制背景音乐
+
+    function audioAutoPlay(id){
+        var audio = document.getElementById(id),
+            play = function(){
+                audio.play();
+                document.removeEventListener("touchstart",play, false);
+            };
+        audio.play();
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            play();
+        }, false);
+        document.addEventListener('YixinJSBridgeReady', function() {
+            play();
+        }, false);
+        document.addEventListener("touchstart",play, false);
+    }
+    audioAutoPlay('Jaudio');
 
 </script> 
 </html>
