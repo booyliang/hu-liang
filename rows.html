@@ -1,11 +1,12 @@
 <!DOCTYPE HTML>
 <html>  
 <head>  
-<title>Rose</title>  
+<title>Rose_hl</title>  
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
 </head>  
+<img style="display: none" src="embrace.jpg" alt="">
 <body style="margin-top: 50px;">  
 <div style="text-align: center"> 
     <canvas id="c" style="width: 20rem"></canvas> 
@@ -129,25 +130,25 @@
     }
     var clear = setInterval(type, 200);
 
-// 控制背景音乐
-//--创建页面监听，等待微信端页面加载完毕 触发音频播放
-document.addEventListener('DOMContentLoaded', function () {
+    // 控制背景音乐
+    //--创建页面监听，等待微信端页面加载完毕 触发音频播放
+    document.addEventListener('DOMContentLoaded', function () {
+        function audioAutoPlay() {
+            var audio = document.getElementById('audio');
+            audio.play();
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                audio.play();
+            }, false);
+        }
+        audioAutoPlay();
+    });
+    //--创建触摸监听，当浏览器打开页面时，触摸屏幕触发事件，进行音频播放
     function audioAutoPlay() {
         var audio = document.getElementById('audio');
         audio.play();
-        document.addEventListener("WeixinJSBridgeReady", function () {
-            audio.play();
-        }, false);
+        document.removeEventListener('touchstart',audioAutoPlay);
     }
-    audioAutoPlay();
-});
-//--创建触摸监听，当浏览器打开页面时，触摸屏幕触发事件，进行音频播放
-function audioAutoPlay() {
-    var audio = document.getElementById('audio');
-    audio.play();
-    document.removeEventListener('touchstart',audioAutoPlay);
-}
-document.addEventListener('touchstart', audioAutoPlay);
+    document.addEventListener('touchstart', audioAutoPlay);
 
 
 </script> 
