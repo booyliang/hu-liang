@@ -18,12 +18,12 @@
         距离是一份考卷,测量相爱的誓言最后会不会实现。 
         我们为爱还在学,学沟通的语言学着谅解,学着不流泪。
         等到我们学会飞,飞越黑夜和考验,日子会从孤单里毕业。
-        用多一点点的辛苦来交换多一点点的幸福,就算 就算幸福还有一段路。
+        用多一点点的辛苦来交换多一点点的幸福,
+        就算 就算幸福还有一段路。
         等我们学会忍耐和付出,这爱情一定会有张证书。
         证明 从此 不孤独
         当然 玫瑰还是有的,相比外面的玫瑰花,它更长久,更灿烂,更重要的是它便宜,不花钱啊！
-        七夕 节日快乐～  
-        author --亮
+        七夕 节日快乐～
     </div>
 
 
@@ -130,15 +130,28 @@
     setInterval(type, 200);
 
     // 控制背景音乐
-    function swap_music() {
-            var oAudio = document.getElementById('Jaudio');
-            if (oAudio.paused) {
-                oAudio.play(); 
-            }
-            else {
-                oAudio.pause(); 
-            }
-        }
+    // function swap_music() {
+    //         var oAudio = document.getElementById('Jaudio');
+    //         if (oAudio.paused) {
+    //             oAudio.play(); 
+    //         }
+    //         else {
+    //             oAudio.pause(); 
+    //         }
+    //     }
+    function audioAutoPlay(id){
+    var audio = document.getElementById(id),
+        play = function(){
+        audio.play();
+        document.removeEventListener("touchstart",play, false);
+    };
+    audio.play();
+    document.addEventListener("WeixinJSBridgeReady", function () {
+        play();
+    }, false);
+    document.addEventListener("touchstart",play, false);
+}
+audioAutoPlay('Jaudio');
 
 </script> 
 </html>
