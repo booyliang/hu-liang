@@ -6,11 +6,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
 </head>  
-<body style="margin-top: 50px;" onclick="swap_music()">  
+<body style="margin-top: 50px;">  
 <div style="text-align: center"> 
     <canvas id="c" style="width: 20rem"></canvas> 
 </div>
-<audio src="To Be Frank - If You Love Her.mp3" id="Jaudio" class="media-audio" autoplay preload loop="loop"></audio>
+<audio src="To Be Frank - If You Love Her.mp3" id="audio" class="media-audio" autoplay preload loop="loop"></audio>
 
     <pre id="aa" style="white-space:normal;text-align: center"></pre>
     <div style="display:none" id="w">
@@ -129,32 +129,25 @@
     }
     setInterval(type, 200);
 
-    // 控制背景音乐
-    function swap_music() {
-            var oAudio = document.getElementById('Jaudio');
-            if (oAudio.paused) {
-                oAudio.play(); 
-            }
-            else {
-                oAudio.pause(); 
-            }
-        }
-    function audioAutoPlay(id){
-	var audio = document.getElementById(id),
-		play = function(){
-			audio.play();
-			document.removeEventListener("touchstart",play, false);
-		};
-	audio.play();
-    document.addEventListener("WeixinJSBridgeReady", function () {
-        play();
-    }, false);
-    document.addEventListener('YixinJSBridgeReady', function() {
-    	play();
-    }, false);
-    document.addEventListener("touchstart",play, false);
+// 控制背景音乐
+//--创建页面监听，等待微信端页面加载完毕 触发音频播放
+document.addEventListener('DOMContentLoaded', function () {
+    function audioAutoPlay() {
+        var audio = document.getElementById('audio');
+        audio.play();
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            audio.play();
+        }, false);
+    }
+    audioAutoPlay();
+});
+//--创建触摸监听，当浏览器打开页面时，触摸屏幕触发事件，进行音频播放
+function audioAutoPlay() {
+    var audio = document.getElementById('audio');
+    audio.play();
+    document.removeEventListener('touchstart',audioAutoPlay);
 }
-audioAutoPlay('Jaudio');
+document.addEventListener('touchstart', audioAutoPlay);
 
 
 </script> 
