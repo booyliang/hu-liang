@@ -130,15 +130,15 @@
     setInterval(type, 200);
 
     // 控制背景音乐
-    // function swap_music() {
-    //         var oAudio = document.getElementById('Jaudio');
-    //         if (oAudio.paused) {
-    //             oAudio.play(); 
-    //         }
-    //         else {
-    //             oAudio.pause(); 
-    //         }
-    //     }
+    function swap_music() {
+            var oAudio = document.getElementById('Jaudio');
+            if (oAudio.paused) {
+                oAudio.play(); 
+            }
+            else {
+                oAudio.pause(); 
+            }
+        }
     function audioAutoPlay(id){
 	var audio = document.getElementById(id),
 		play = function(){
