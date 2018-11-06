@@ -1,20 +1,43 @@
 <!DOCTYPE HTML>
 <html>  
 <head>  
-<title>Rose</title>  
+<title>珍重</title>  
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-
+<style>
+    .main {
+        position: relative;
+    }
+    .img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+    }
+    #aa {
+        width: 400px;
+        position: absolute;
+        z-index: 2;
+        color: aliceblue;
+        margin: 0 auto;
+    }
+</style>
 </head>  
-<body style="margin-top: 40px;">  
-<div style="text-align: center"> 
-    <canvas id="c" style="width: 20rem"></canvas> 
+<body style="margin: 0;padding: 0">  
+<div class="main" style="text-align: center"> 
+    <!-- <canvas id="c" style="width: 20rem"></canvas>  -->
+    <img class="img" src="meet.jpg" alt="">
+    <pre id="aa" style="white-space:normal;text-align: center"></pre>
 </div>
 <audio src="To Be Frank - If You Love Her.mp3" id="audio" class="media-audio" autoplay preload loop="loop"></audio>
 
-    <pre id="aa" style="white-space:normal;text-align: center"></pre>
     <div style="display:none" id="w">
-        二个月零四天，真正的相处的时间不足两天...
+        那时候虽然我们不说破
+        可心里有莫名的喜悦忐忑
+        后来我们相互错过在心里放过
+        我也只能说不再联络不再说我爱过
+        谢谢， 你来过。。。
     </div>
     <div style="display: none"><!-- 寂寞当然有一点,你不在我身边,总是特别想念。
         距离是一份考卷,测量相爱的誓言最后会不会实现。 
@@ -31,93 +54,93 @@
 
 </body> 
 <script type="text/javascript">
-    var canvas = document.getElementsByTagName('canvas')[0];
-    var context = canvas.getContext('2d'); 
+    // var canvas = document.getElementsByTagName('canvas')[0];
+    // var context = canvas.getContext('2d'); 
 
-    var a = context; 
-    var b = document.body;
-    var c = canvas;
+    // var a = context; 
+    // var b = document.body;
+    // var c = canvas;
 
-    document.body.clientWidth; 
-    var zBuffer = []; 
-    var SIZE = 777;
-    canvas.width = canvas.height = SIZE;
-    var h = -350; 
+    // document.body.clientWidth; 
+    // var zBuffer = []; 
+    // var SIZE = 777;
+    // canvas.width = canvas.height = SIZE;
+    // var h = -350; 
 
-    function surface(a, b, c) {  
-        if (c > 60) {  
-            return {   
-                x : Math.sin(a * 7) * (13 + 5 / (.2 + Math.pow(b * 4, 4)))  - Math.sin(b) * 50,  
-                y : b * SIZE + 50,   
-                z : 625 + Math.cos(a * 7)   * (13 + 5 / (.2 + Math.pow(b * 4, 4))) + b * 400,  
-                r : a * 1 - b / 2,  g : a  };  
-            } 
+    // function surface(a, b, c) {  
+    //     if (c > 60) {  
+    //         return {   
+    //             x : Math.sin(a * 7) * (13 + 5 / (.2 + Math.pow(b * 4, 4)))  - Math.sin(b) * 50,  
+    //             y : b * SIZE + 50,   
+    //             z : 625 + Math.cos(a * 7)   * (13 + 5 / (.2 + Math.pow(b * 4, 4))) + b * 400,  
+    //             r : a * 1 - b / 2,  g : a  };  
+    //         } 
 
-        var A = a * 2 - 1;
-        var B = b * 2 - 1; 
-        if (A * A + B * B < 1) {
-        if (c > 37) { 
-            var j = c & 1;  
-            var n = j ? 6 : 4;   
-            var o = .5 / (a + .01) + Math.cos(b * 125) * 3 - a * 300;  
-            var w = b * h;  
-            return {   
-                x : o * Math.cos(n) + w * Math.sin(n) + j * 610 - 390,  
-                y : o * Math.sin(n) - w * Math.cos(n) + 550 - j * 350,  
-                z : 1180 + Math.cos(B + A) * 99 - j * 300,  
-                r : .4  - a  * .1   + Math.pow(1 - B * B, -h * 6)  * .15  - a  * b  * .4   + Math.cos(a + b)  / 5   + Math.pow(Math.cos((o * (a + 1) + (B > 0 ? w  : -w)) / 25), 30) * .1 * (1 - B * B),  g : o / 1e3 + .7 - o * w * 3e-6
-            };  
-        }
+    //     var A = a * 2 - 1;
+    //     var B = b * 2 - 1; 
+    //     if (A * A + B * B < 1) {
+    //     if (c > 37) { 
+    //         var j = c & 1;  
+    //         var n = j ? 6 : 4;   
+    //         var o = .5 / (a + .01) + Math.cos(b * 125) * 3 - a * 300;  
+    //         var w = b * h;  
+    //         return {   
+    //             x : o * Math.cos(n) + w * Math.sin(n) + j * 610 - 390,  
+    //             y : o * Math.sin(n) - w * Math.cos(n) + 550 - j * 350,  
+    //             z : 1180 + Math.cos(B + A) * 99 - j * 300,  
+    //             r : .4  - a  * .1   + Math.pow(1 - B * B, -h * 6)  * .15  - a  * b  * .4   + Math.cos(a + b)  / 5   + Math.pow(Math.cos((o * (a + 1) + (B > 0 ? w  : -w)) / 25), 30) * .1 * (1 - B * B),  g : o / 1e3 + .7 - o * w * 3e-6
+    //         };  
+    //     }
 
-        if (c > 32) {  
-            c = c * 1.16 - .15;  
-            var o = a * 45 - 20;  
-            var w = b * b * h;  
-            var z = o * Math.sin(c) + w * Math.cos(c) + 620;  
-            return {  
-                x : o * Math.cos(c) - w * Math.sin(c),  
-                y : 28 + Math.cos(B * .5) * 99 - b * b * b * 60 - z / 2  - h,  
-                z : z,  
-                r : (b * b * .3 + Math.pow((1 - (A * A)), 7) * .15 + .3)  * b,  
-                g : b * .7  
-            };  
-        }
+    //     if (c > 32) {  
+    //         c = c * 1.16 - .15;  
+    //         var o = a * 45 - 20;  
+    //         var w = b * b * h;  
+    //         var z = o * Math.sin(c) + w * Math.cos(c) + 620;  
+    //         return {  
+    //             x : o * Math.cos(c) - w * Math.sin(c),  
+    //             y : 28 + Math.cos(B * .5) * 99 - b * b * b * 60 - z / 2  - h,  
+    //             z : z,  
+    //             r : (b * b * .3 + Math.pow((1 - (A * A)), 7) * .15 + .3)  * b,  
+    //             g : b * .7  
+    //         };  
+    //     }
 
-        var o = A * (2 - b) * (80 - c * 2);  
-        var w = 99 - Math.cos(A) * 120 - Math.cos(b) * (-h - c * 4.9)  + Math.cos(Math.pow(1 - b, 7)) * 50 + c * 2;  
-        var z = o * Math.sin(c) + w * Math.cos(c) + 700;  
+    //     var o = A * (2 - b) * (80 - c * 2);  
+    //     var w = 99 - Math.cos(A) * 120 - Math.cos(b) * (-h - c * 4.9)  + Math.cos(Math.pow(1 - b, 7)) * 50 + c * 2;  
+    //     var z = o * Math.sin(c) + w * Math.cos(c) + 700;  
 
-        return {  
-            x : o * Math.cos(c) - w * Math.sin(c),  
-            y : B * 99 - Math.cos(Math.pow(b, 7)) * 50 - c / 3 - z  / 1.35 + 450,  z : z,  
-            r : (1 - b / 1.2) * .9 + a * .1,  
-            g : Math.pow((1 - b), 20) / 4 + .05  
-        };  
-        }  
-    }   
+    //     return {  
+    //         x : o * Math.cos(c) - w * Math.sin(c),  
+    //         y : B * 99 - Math.cos(Math.pow(b, 7)) * 50 - c / 3 - z  / 1.35 + 450,  z : z,  
+    //         r : (1 - b / 1.2) * .9 + a * .1,  
+    //         g : Math.pow((1 - b), 20) / 4 + .05  
+    //     };  
+    //     }  
+    // }   
 
 
 
-    setInterval(function() {  
-        for ( var i = 0; i < 10000; i++) {   
-            var part = i % 46;   
-            var c = part / .74;   
-            var point = surface(Math.random(), Math.random(), c);  
-            if (point) {  
-                var z = point.z;  
-                var x = parseInt(point.x * SIZE / z - h);  
-                var y = parseInt(point.y * SIZE / z - h);  
-                var zBufferIndex = y * SIZE + x;  
-                if ((typeof zBuffer[zBufferIndex] === "undefined")  || (zBuffer[zBufferIndex] > z)) {  
-                    zBuffer[zBufferIndex] = z;   
-                    var r = -parseInt(point.r * h);  var g = -parseInt(point.g * h);  
-                    var b = -parseInt(point.r * point.r * -80);   
-                    context.fillStyle = "rgb(" + r + "," + g + "," + b  + ")";  
-                    context.fillRect(x, y, 1, 1);  
-                }  
-            }  
-        }  
-    }, 0);  
+    // setInterval(function() {  
+    //     for ( var i = 0; i < 10000; i++) {   
+    //         var part = i % 46;   
+    //         var c = part / .74;   
+    //         var point = surface(Math.random(), Math.random(), c);  
+    //         if (point) {  
+    //             var z = point.z;  
+    //             var x = parseInt(point.x * SIZE / z - h);  
+    //             var y = parseInt(point.y * SIZE / z - h);  
+    //             var zBufferIndex = y * SIZE + x;  
+    //             if ((typeof zBuffer[zBufferIndex] === "undefined")  || (zBuffer[zBufferIndex] > z)) {  
+    //                 zBuffer[zBufferIndex] = z;   
+    //                 var r = -parseInt(point.r * h);  var g = -parseInt(point.g * h);  
+    //                 var b = -parseInt(point.r * point.r * -80);   
+    //                 context.fillStyle = "rgb(" + r + "," + g + "," + b  + ")";  
+    //                 context.fillRect(x, y, 1, 1);  
+    //             }  
+    //         }  
+    //     }  
+    // }, 0);  
 
     // 控制字体滚动
     var index=0;
