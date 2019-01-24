@@ -19,3 +19,8 @@ body {
     background: -ms-linear-gradient(top,#cbebdb 0,#3794c0 120%);
     background: linear-gradient(top,#cbebdb 0,#3794c0 120%);
 }
+#go{
+    position: absolute;
+    left: 50%;
+    margin: 10px;
+}
